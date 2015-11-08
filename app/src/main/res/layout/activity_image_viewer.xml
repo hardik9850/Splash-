@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:max="400"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:mirrorForRtl="false"
         android:progress="200"
         android:visibility="gone"

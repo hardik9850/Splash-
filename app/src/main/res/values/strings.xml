@@ -1,8 +1,8 @@
 <resources>
 
-        <string name="app_name">Splash!</string>
-        <string name="app_name_pro">Effects</string>
-        <string name="app_name_track">Pro</string>
+        <string name="app_name">Photo Labs</string>
+        <string name="app_name_pro">Photo</string>
+        <string name="app_name_track">Labs</string>
         <string name="take_photo_camera">Take photo</string>
         <string name="choose_from_gallery">Choose image</string>
         <string name="img_desc">Images</string>

@@ -38,19 +38,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onClick(View v) {
-        int position = recyclerView.indexOfChild(v);
-        Toast.makeText(mContext, "clicked " + position, Toast.LENGTH_LONG).show();
+
+        int position = recyclerView.getChildAdapterPosition(v);
         addEffect(position);
         ((MainActivity)mContext).changeUI(position);
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtTitle;
-
-        public ViewHolder(View v) {
+        int position;
+        public ViewHolder(View v,int poisiton) {
             super(v);
             txtTitle = (TextView) v.findViewById(R.id.adapter_txt);
+            position = poisiton;
             //txtTitle.setOnClickListener(new RecyclerViewAdapter());
         }
     }
@@ -59,13 +61,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.activity_adapter, viewGroup, false);
         view.setOnClickListener(this);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view,i);
+        viewHolder.itemView.setOnClickListener(this);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
         viewHolder.txtTitle.setText(mItemList.get(position).getTitle());
+        viewHolder.position = position;
 
     }
 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\jp.wasabeef\fresco-processors\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="de1ccf42ac17495f675a4beb80a2b3a72957bb7a">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-c765f999a4afcbac6cf2d0dba3e5a4a4c3d93cd7.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.7.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c4334f20001e3ceaa00b203290961224aca8744f">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-d8365d8906e8e97b58813c1c61e159f1b7d33536.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-9c7b269a677e9a9cf2c1b0d6d57ac3962a4cd0b0.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-5737935dd2c9f1007c25494ac8de52e98b4bce8d.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.7.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7eb126039737b3ada03141cba019d2c385cceca8">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-8272c055c56751520a0fb7d1f0978022e4500a5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Hardik9850\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-c4e893d811458498242fcb2de9ec96b2e1a54b32.jar" />
+    </item>
+    <item
+        jar="D:\Softwares\SDK android l adt-bundle-windows-x86_64-20140702\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-1abb6e1c49178d727ef3caff4b29d221835f215f.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.7.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a31fd4d68ac17ad1988f4b44eed1f69327315a55">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-9b448b134986951ed3594624115ce1baf5ea441b.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.isseiaoki\simplecropview\1.0.9\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="37a4481dacad358cd95304ce29c4307438404d22">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-c984203fa959bc90eface0a9a5d13efd0f0f5c65.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.github.michael-rapp\android-material-dialog\2.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="18d328fe85d17f06533dadb052e1624454db65d5">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-a590e45d811774fb5802b1f4b8cb3444075bb15b.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="40e7757d9b06db670062ddb3cf5b30c129b2fd8c">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-aeda7f35a42d99ff23db7f34a6323c8b92f9a38d.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-71124002c7f39fbc79842bcc4eef2d482730edab.jar" />
+    </item>
+    <item
+        jar="C:\Users\Hardik9850\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\library-2.4.0-89abed4bdf4d35ab941f8c20d513554f7792b305.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.7.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="956a7969705640c8790b983aaa7ff805dff80cf6">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-d060611945213cf281684ff6445a3800c765e746.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-14bb2c647fe847def34ae20f17224b18a75bc53e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Hardik9850\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-24cdb0fbb3ea9bf54cd4d7bf5866e7d736b71023.jar" />
+    </item>
+    <item
+        jar="D:\Android STUFF\Temp\Splash\app\build\intermediates\exploded-aar\com.github.michael-rapp\android-util\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="adbda8de5bf877d4e7e385e65803cb0aad83ebdc">
+        <dex dex="D:\Android STUFF\Temp\Splash\app\build\intermediates\pre-dexed\debug\classes-4e93b55ac010378713973f4c711572abc74e79c9.jar" />
+    </item>
+
+</items>

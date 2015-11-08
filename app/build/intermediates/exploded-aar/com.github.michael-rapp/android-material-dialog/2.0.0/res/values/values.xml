@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/michael/Android%20Studio/AndroidMaterialDialog/library/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <item name="dialog_button_bar_margin_bottom" type="dimen">8dp</item>
+    <item name="dialog_button_bar_margin_left" type="dimen">16dp</item>
+    <item name="dialog_button_bar_margin_right" type="dimen">16dp</item>
+    <item name="dialog_button_bar_min_height" type="dimen">48dp</item>
+    <item name="dialog_button_min_width" type="dimen">64dp</item>
+    <item name="dialog_button_padding" type="dimen">8dp</item>
+    <item name="dialog_button_spacing" type="dimen">8dp</item>
+    <item name="dialog_button_text_size" type="dimen">14sp</item>
+    <item name="dialog_content_padding_bottom" type="dimen">16dp</item>
+    <item name="dialog_content_padding_left" type="dimen">24dp</item>
+    <item name="dialog_content_padding_right" type="dimen">24dp</item>
+    <item name="dialog_content_padding_top" type="dimen">24dp</item>
+    <item name="dialog_content_spacing" type="dimen">16dp</item>
+    <item name="dialog_title_drawable_padding" type="dimen">8dp</item>
+</resources>

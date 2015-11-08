@@ -1,14 +1,15 @@
 package com.splash;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -20,28 +21,44 @@ import android.widget.Toast;
 import com.isseiaoki.simplecropview.CropImageView;
 import com.splash.adapter.RecyclerViewAdapter;
 import com.splash.bitmap.BitmapLoader;
+import com.splash.bitmap.BitmapProcessing;
 import com.splash.library.Constants;
 import com.splash.library.Toaster;
 import com.splash.library.UriToUrl;
 import com.splash.model.Item;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+
+import de.mrapp.android.dialog.MaterialDialogBuilder;
 
 /**
  * Created by Hardik9850 on 10-Sep-15.
  */
+
 public class MainActivity extends Activity implements View.OnClickListener {
     ImageView imageView;
     CropImageView croppedImageView;
     RecyclerView recyclerView;
     Bitmap bitmap;
-    private String options[] = {"Crop", "Brightness", "Blur", "Animate", "Flip"};
-    private Button cropButton;
+    int brightnessValue;
+    private String options[] = {"Crop", "Brightness", "Noise", "Gaussian", "Grayscale" , "Save"};
+    private Button applyButton;
     private RecyclerViewAdapter adapter;
     private SeekBar brightnessSeekBar;
     private Uri imageUri;
     private String strImageUrl;
     private final int HIDE_VIEW = 8, SHOW_VIEW = 0;
+    private final int CROP=0;
+    private final int BRIGHTNESS=1;
+    private final int NOISE=2;
+    private final int GAUSSIAN=3;
+    private final int GRAYSCALE=4;
+    private final int SAVEIMAGE=5;
+    private Bitmap globalBitmap=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +67,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         bindViews();
         setListener();
         loadImage();
-
     }
 
     private class BitmapWorkerTask extends AsyncTask<Void, Void, Bitmap> {
@@ -85,6 +101,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (bitmap != null) {
                 changeToolBoxVisibility(0);
                 setImage(bitmap);
+                storeBitmap(bitmap);
                 setupAdapter();
             } else {
                 Toaster.make(getApplicationContext(), "Image not found");
@@ -93,11 +110,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    private void storeBitmap(Bitmap bitmap) {
+        globalBitmap = bitmap;
+    }
+
+    Bitmap getBitmap(){
+        return globalBitmap;
+    }
+
     private void setImage(Bitmap bitmap) {
         try {
             imageView.setImageBitmap(bitmap);
-            Toaster.make(getApplicationContext(), "Setting image here");
         } catch (Exception e) {
+            Toaster.make(getApplicationContext(), "Error setting Image ! ");
+
             Log.e("Error setting bitmpa,", "To image ", e);
         }
     }
@@ -112,14 +138,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     public void changeUI(int choice) {
         switch (choice) {
-            case 0:
+            case CROP:
                 cropImage();
                 break;
 
-            case 1:
+            case BRIGHTNESS:
                 changeBrightness();
                 break;
 
+            case NOISE:
+                applyNoise();
+                break;
+
+            case GAUSSIAN:
+                applyGaussian();
+                break;
+
+            case GRAYSCALE:
+                applyGrayscale();
+                break;
+
+            case SAVEIMAGE:
+                try {
+                    saveImage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
         }
 
     }
@@ -127,8 +172,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void changeBrightness() {
         changeToolBoxVisibility(View.GONE);
+        applyButton.setText("brightness");
         changeBrightnessSeekbarVisibility();
-
+        applyButton.setVisibility(View.VISIBLE);
     }
 
     private void changeBrightnessSeekbarVisibility() {
@@ -137,11 +183,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private void cropImage() {
+        applyButton.setText("crop");
         changeToolBoxVisibility(View.GONE);
         imageView.setVisibility(View.GONE);
         croppedImageView.setImageBitmap(((BitmapDrawable) imageView.getDrawable()).getBitmap());
         croppedImageView.setVisibility(View.VISIBLE);
-        cropButton.setVisibility(View.VISIBLE);
+        applyButton.setVisibility(View.VISIBLE);
     }
 
     private void onCropPressed() {
@@ -152,28 +199,85 @@ public class MainActivity extends Activity implements View.OnClickListener {
         imageView.setImageBitmap(croppedImageView.getCroppedBitmap());
         imageView.setVisibility(View.VISIBLE);
         croppedImageView.setImageBitmap(null);
-        ((BitmapDrawable) croppedImageView.getDrawable()).getBitmap().recycle();
+        try {
+            ((BitmapDrawable) croppedImageView.getDrawable()).getBitmap().recycle();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         croppedImageView.setVisibility(View.GONE);
-        cropButton.setVisibility(View.GONE);
+        applyButton.setVisibility(View.GONE);
         changeToolBoxVisibility(View.VISIBLE);
+        storeBitmap(croppedImageView.getCroppedBitmap());
+    }
 
+    private void applyNoise() {
+        BitmapDrawable bitmapDrawable=(BitmapDrawable)imageView.getDrawable();
+        bitmap = BitmapProcessing.noise(bitmapDrawable.getBitmap());
+        setImage(bitmap);
+        storeBitmap(bitmap);
+    }
+
+    private void applyGaussian(){
+        BitmapDrawable bitmapDrawable=(BitmapDrawable)imageView.getDrawable();
+        bitmap = BitmapProcessing.gaussian(bitmapDrawable.getBitmap());
+        setImage(bitmap);
+        storeBitmap(bitmap);
+    }
+
+
+    private void applyGrayscale(){
+        BitmapDrawable bitmapDrawable=(BitmapDrawable)imageView.getDrawable();
+        bitmap = BitmapProcessing.grayscale(bitmapDrawable.getBitmap());
+        setImage(bitmap);
+        storeBitmap(bitmap);
+    }
+
+    private void saveImage() throws Exception{
+        imageView.setDrawingCacheEnabled(true);
+        Bitmap bitmap=imageView.getDrawingCache();
+        isDirectoryExist();
+        FileOutputStream fos=new FileOutputStream(Environment.getExternalStorageDirectory()
+                .toString()+"/Photo lab/"+getFilename());
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 95, fos);
+        Toast.makeText(getApplicationContext(),"Saving image",Toast.LENGTH_LONG).show();
+    }
+
+    private void isDirectoryExist(){
+        File photolabDir=new File(Environment.getExternalStorageDirectory()+"/Photo lab/");
+        if(!(photolabDir.exists() || photolabDir.isDirectory())){
+            photolabDir.mkdir();
+        }
+    }
+
+    private String getFilename(){
+        return "Photo lab_"+System.currentTimeMillis()+".jpg";
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_crop:
+                if(((Button)v).getText().equals("crop"))
                 onCropPressed();
+                else
+                onBrightnessPressed();
                 break;
 
         }
+    }
+
+    private void onBrightnessPressed(){
+        changeBrightnessSeekbarVisibility();
+        changeToolBoxVisibility(View.VISIBLE);
+        applyButton.setVisibility(View.GONE);
     }
 
     private void bindViews() {
         imageView = (ImageView) findViewById(R.id.img_view);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_img_view);
         croppedImageView = (CropImageView) findViewById(R.id.cropped_img_view);
-        cropButton = (Button) findViewById(R.id.btn_crop);
+        applyButton = (Button) findViewById(R.id.btn_crop);
         brightnessSeekBar = (SeekBar) findViewById(R.id.brightness_seekbar);
     }
 
@@ -192,7 +296,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private void setListener() {
-        cropButton.setOnClickListener(this);
+        applyButton.setOnClickListener(this);
+        brightnessSeekBar.setOnSeekBarChangeListener(brightnessListener);
+        brightnessSeekBar.setProgress(200);
     }
 
     SeekBar.OnSeekBarChangeListener brightnessListener = new SeekBar.OnSeekBarChangeListener() {
@@ -208,12 +314,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-
+            Log.d("Scale",""+seekBar.getProgress());
+            applyBrightness(seekBar.getProgress());
         }
     };
 
     private void changeToolBoxVisibility(int option) {
         recyclerView.setVisibility(option == 8 ? View.GONE : View.VISIBLE);
+    }
+
+    private void applyBrightness(int brightValue){
+        bitmap = globalBitmap.copy(globalBitmap.getConfig(), true);
+        bitmap = BitmapProcessing.brightness(bitmap, brightValue - 200);
+        setImage(bitmap);
     }
 
 }

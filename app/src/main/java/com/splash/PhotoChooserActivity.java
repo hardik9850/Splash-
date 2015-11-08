@@ -100,6 +100,7 @@ public class PhotoChooserActivity extends Activity {
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 		startActivityForResult(intent, Constants.REQUEST_CAMERA);
+
 	}
 	
 	private Uri getOutputMediaFile(){
@@ -115,7 +116,7 @@ public class PhotoChooserActivity extends Activity {
 		intent.setData(imageUri);
 		startActivity(intent);
 		overridePendingTransition(0, 0);
-		finish();
+		//finish();
 	}
 
 	private void flyOut(final String method_name) {

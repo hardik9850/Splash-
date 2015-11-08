@@ -27,4 +27,5 @@ dependencies {
     compile 'com.isseiaoki:simplecropview:1.0.9'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'jp.wasabeef:fresco-processors:1.0.0'
+    compile 'com.github.michael-rapp:android-material-dialog:2.0.0'
 }
