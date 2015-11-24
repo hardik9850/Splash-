@@ -1,6 +1,7 @@
 package com.splash;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -114,9 +115,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         globalBitmap = bitmap;
     }
 
-    Bitmap getBitmap(){
-        return globalBitmap;
-    }
+
 
     private void setImage(Bitmap bitmap) {
         try {
@@ -124,7 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } catch (Exception e) {
             Toaster.make(getApplicationContext(), "Error setting Image ! ");
 
-            Log.e("Error setting bitmpa,", "To image ", e);
+            Log.e(getLocalClassName(), "Error setting image ", e);
         }
     }
 
@@ -219,10 +218,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void applyGaussian(){
-        BitmapDrawable bitmapDrawable=(BitmapDrawable)imageView.getDrawable();
-        bitmap = BitmapProcessing.gaussian(bitmapDrawable.getBitmap());
-        setImage(bitmap);
-        storeBitmap(bitmap);
+        final BitmapDrawable bitmapDrawable=(BitmapDrawable)imageView.getDrawable();
+        new AsyncTask<Void,Void,Bitmap>(){
+            ProgressDialog dialog;
+            @Override
+            protected Bitmap doInBackground(Void... params) {
+
+                return BitmapProcessing.gaussian(bitmapDrawable.getBitmap());
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                dialog = new ProgressDialog(MainActivity.this);
+                dialog.setMessage("Processing");
+                dialog.show();
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                if(dialog.isShowing()) dialog.dismiss();
+
+                setImage(bitmap);
+                storeBitmap(bitmap);
+
+            }
+
+
+        }.execute();
+
+
     }
 
 
